@@ -3,8 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ArrowRight, Mail, Phone, Clock } from "lucide-react";
+import { ArrowRight, Mail, Phone, Clock, Home } from "lucide-react";
 import CPSLogo from "@/assets/CPS Logo.png";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default function LandingPage() {
   const [activeSection, setActiveSection] = useState("inicio");
@@ -189,37 +196,49 @@ export default function LandingPage() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8">
               Contáctenos
             </h2>
-            <div className="grid gap-10 sm:grid-cols-2">
-              <div className="space-y-4">
+            {/* First column with fixed, second fill the space */}
+            <div className="grid gap-10 sm:grid-cols-3">
+              <div className="space-y-4 w-fit">
                 <h3 className="text-xl font-bold">Información de Contacto</h3>
                 <div className="flex items-center space-x-2">
                   <Mail className="h-5 w-5 text-red-600" />
-                  <span>info@cps-ltda.com</span>
+                  {/* Mail link */}
+                  <a
+                    href="mailto:ventas@cpsingenieria.cl"
+                    className="hover:underline"
+                  >
+                    <span>ventas@cpsingenieria.cl</span>
+                  </a>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Phone className="h-5 w-5 text-red-600" />
-                  <span>+56 2 2345 6789</span>
+                  <a href="tel:+56222188643" className="hover:underline">
+                    <span>+56 2 2218 8643</span>
+                  </a>
+                </div>
+                <div className="flex flex-col ">
+                  <div className="flex items-center space-x-2">
+                    <Home className="h-5 w-5 text-red-600" />
+                    <a
+                      className="hover:underline"
+                      href="http://maps.google.com/?q=Los Tres Antonios 2083, Ñuñoa, Santiago, Chile"
+                    >
+                      <span>Los Tres Antonios 2083, Ñuñoa</span>
+                    </a>
+                  </div>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Clock className="h-5 w-5 text-red-600" />
                   <span>Lunes a Viernes: 9:00 AM - 6:00 PM</span>
                 </div>
               </div>
-              <form className="space-y-4">
-                <Input placeholder="Nombre" />
-                <Input type="email" placeholder="Email" />
-                <Textarea placeholder="Mensaje" />
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="captcha" />
-                  <label htmlFor="captcha">No soy un robot</label>
-                </div>
-                <Button
-                  type="submit"
-                  className="w-full bg-red-600 hover:bg-red-700"
-                >
-                  Enviar Mensaje
-                </Button>
-              </form>
+              <div className="space-y-4 col-span-2">
+                <iframe
+                  className="w-full h-48"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.1338052865663!2d-70.6045288!3d-33.47357939999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cfe42d66419f%3A0xeeffd5d65f5d19f4!2sLos%20Tres%20Antonios%202083%2C%20%C3%91u%C3%B1oa%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1sen!2scl!4v1727876867409!5m2!1sen!2scl"
+                  loading="lazy"
+                ></iframe>
+              </div>
             </div>
           </div>
         </section>
@@ -228,20 +247,6 @@ export default function LandingPage() {
         <p className="text-xs text-gray-500 dark:text-gray-400">
           © 2024 CPS LTDA. Todos los derechos reservados.
         </p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link
-            className="text-xs hover:underline underline-offset-4"
-            onClick={() => {}}
-          >
-            Términos de Servicio
-          </Link>
-          <Link
-            className="text-xs hover:underline underline-offset-4"
-            onClick={() => {}}
-          >
-            Política de Privacidad
-          </Link>
-        </nav>
       </footer>
     </div>
   );
